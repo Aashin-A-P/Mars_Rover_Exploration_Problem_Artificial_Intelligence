@@ -6,11 +6,16 @@ from adversarial_search import minimax
 from visualize import animate_path
 
 def main():
+    # ✅ Generate ONE grid and reuse it
     mars = MarsGrid(6, 6, num_craters=5, num_sites=3)
     mars.add_rover((0, 0))
     mars.add_rover((5, 5))
     grid = mars.get_grid()
     start, goal = mars.rovers[0], list(mars.sites)[0]
+
+    print("Start:", start, "Goal:", goal)
+    print("Sites:", mars.sites)
+    print("Craters:", mars.craters)
 
     print("\n=== Mars Rover Exploration Menu ===")
     print("1. BFS")
@@ -19,6 +24,7 @@ def main():
     print("4. A*")
     print("5. CSP (multi-rover assignment)")
     print("6. Adversarial Search (NASA vs ISRO)")
+    print("7. Run ALL searches (BFS, DFS, UCS, A*) and save GIFs for comparison")
     choice = input("Choose algorithm: ")
 
     pygame.init()
@@ -58,6 +64,18 @@ def main():
         score, move = minimax(grid, mars.sites, (mars.rovers[0], mars.rovers[1]),
                               depth=3, alpha=-math.inf, beta=math.inf, maximizing_player=0)
         print("Adversarial Score (Player1):", score, "Best Move:", move)
+
+    elif choice == "7":  # ✅ Run all searches on SAME grid
+        paths = {
+            "bfs": bfs(grid, start, goal),
+            "dfs": dfs(grid, start, goal),
+            "ucs": ucs(grid, start, goal),
+            "astar": a_star(grid, start, goal)
+        }
+        for name, path in paths.items():
+            print(f"{name.upper()} Path:", path)
+            if path:
+                animate_path(screen, grid, start, path, save_gif=True, gif_name=f"{name}.gif")
 
     else:
         print("Invalid choice.")
