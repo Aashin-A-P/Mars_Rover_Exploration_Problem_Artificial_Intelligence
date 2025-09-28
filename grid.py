@@ -3,21 +3,21 @@ class MarsGrid:
         # 0 = empty, 1 = crater, 2 = site
         self.grid = [
             [0,0,0,0,2,0],
-            [0,1,1,0,0,0],
-            [0,0,0,0,1,0],
-            [0,2,1,0,0,0],
-            [0,0,0,0,0,1],
-            [0,0,0,2,0,0]
+            [0,1,0,1,0,0],
+            [0,0,2,0,1,0],
+            [0,1,0,0,0,0],
+            [0,0,0,1,0,2],
+            [2,0,0,0,0,0]
         ]
         self.rows, self.cols = len(self.grid), len(self.grid[0])
 
-        # fixed sets
-        self.craters={(1,1),(1,2),(2,4),(3,2),(4,5)}
-        self.sites={(0,4),(3,1),(5,3)}
-        self.rovers=[]
+        self.craters = {(1,1),(1,3),(2,4),(3,1),(4,3)}
+        self.sites   = {(0,4),(2,2),(4,5),(5,0)}
+
+        self.rovers = []
 
     def add_rover(self,pos):
-        if self.grid[pos[0]][pos[1]]==0:
+        if self.grid[pos[0]][pos[1]] == 0:
             self.rovers.append(pos)
             return True
         return False
