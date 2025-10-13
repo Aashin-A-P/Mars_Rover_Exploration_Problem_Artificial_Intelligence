@@ -1,113 +1,129 @@
-# Mars_Rover_Exploration_Problem_Artificial_Intelligence
-An AI project to demonstrate the major search strategies and problem solving strategies to solve the Mars Rover Problem
+# 🧠 AI Problem Solving Repository
 
-
-So we plan to implement a Mars Rover Exploration Project implementing
-- DFS
-- BFS
-- A* algorithm
-- UCS
-- Adversial Search
-- CSP
-
-## 1. **Depth First Search (DFS)**
-
-- **Idea:** Explore one route deeply before backtracking.
-    
-- **In Rover Context:**
-    
-    - The rover keeps driving in one direction until it either finds the site or hits a crater.
-        
-    - Risk: may waste time going into long dead ends.
-        
-- **Best When:** Memory is limited, and _any_ path is acceptable.
-    
+Welcome to the **AI_Problem_Solving** repository — a comprehensive collection of artificial intelligence implementations designed to explore core concepts in **search algorithms**, **constraint satisfaction problems**, and **adversarial reasoning**.  
+Each module focuses on a classical AI domain problem, combining theory with practical, visual, and algorithmic implementations.
 
 ---
 
-## 2. **Breadth First Search (BFS)**
+## 📁 Repository Structure
 
-- **Idea:** Expand all paths level by level.
-    
-- **In Rover Context:**
-    
-    - The rover explores all nearby squares first, ensuring it finds the path with **fewest steps**.
-        
-    - Doesn’t consider terrain difficulty or energy.
-        
-- **Best When:** Terrain cost is uniform, and you want the _shortest path in steps_.
-    
+| Module | Description |
+|:--|:--|
+| **1️⃣ Smart City Grid** | Simulation of a dynamic grid environment representing a smart city with autonomous agents using heuristic search for optimal pathfinding and traffic management. |
+| **2️⃣ Mars Rover Problem** | Implementation of rover navigation across a terrain grid using BFS, DFS, UCS, and A* algorithms to determine optimal exploration routes under varying cost conditions. |
+| **3️⃣ Pacman Problem** | Classic AI search problem featuring Pacman’s intelligent movement through a maze using uninformed and informed search strategies with path visualization. |
+| **4️⃣ Adversarial Search using Checkers** | Implementation of adversarial search for the game of Checkers using **Minimax** and **Alpha–Beta pruning**, demonstrating optimal decision-making under competitive settings. |
+| **5️⃣ Constraint Satisfaction Problems (CSP)** | CSP solutions for **Sudoku** and **University Timetable Scheduling** problems using **Backtracking**, **AC-3 consistency**, and **MRV heuristics** for efficient constraint propagation. |
+| **6️⃣ Search Algorithms** | Foundational AI search algorithms implemented from scratch — **BFS**, **DFS**, **UCS**, and **A\*** — with visual representations and comparative performance metrics. |
 
 ---
 
-## 3. **Uniform Cost Search (UCS)**
+## ⚙️ Tech Stack
 
-- **Idea:** Always expand the path with the **lowest cumulative cost so far**.
-    
-- **In Rover Context:**
-    
-    - Each move has a cost = energy usage (flat terrain = 1, rocky slope = 3, crater detour = 5, etc.).
-        
-    - UCS finds the **least energy-consuming path**, even if it’s longer in steps.
-        
-- **Strength:** Optimal when costs vary.
-    
-- **Weakness:** Can expand many unnecessary nodes if no heuristic is guiding it.
-    
-- **Best When:** Energy efficiency is more important than number of steps.
-    
+- **Language:** Python 3.10+
+- **Libraries Used:**  
+  - `numpy`, `pandas` – data handling  
+  - `pygame`, `streamlit`, `matplotlib` – visualization & UI  
+  - `heapq`, `queue`, `collections` – core data structures  
+  - `time`, `copy`, `random` – simulation and control  
 
 ---
 
-## 4. **Informed Search (A*)**
+## 🧩 Module Overviews
 
-- **Idea:** Use both real cost and heuristic estimate.
-    
-- **Formula:** `f(n) = g(n) + h(n)`
-    
-    - `g(n)` = cost so far (like UCS)
-        
-    - `h(n)` = estimated cost to goal (distance, slope factor)
-        
-- **In Rover Context:**
-    
-    - A* prefers paths that are both energy-efficient and closer to the goal.
-        
-    - Much faster than UCS if heuristic is admissible.
-        
+### 🏙️ Smart City Grid
+A grid-based AI simulation representing a smart city traffic network.  
+Agents navigate roads using heuristic-driven pathfinding (A\*, UCS) while dynamically adapting to congestion and road closures.  
+Supports visual visualization in **Streamlit** or **Pygame**.
+
+**Features:**
+- Dynamic obstacle generation (roadblocks, traffic)
+- Shortest path detection using multiple algorithms
+- Real-time visualization
 
 ---
 
-## 5. **Constraint Satisfaction Problem (CSP)**
+### 🚀 Mars Rover Problem
+Inspired by NASA’s exploration problem — simulate a rover navigating a terrain grid with different elevation or energy costs.  
 
-- **Idea:** Assign rovers to multiple targets under rules.
-    
-- **In Rover Context:**
-    
-    - Variables = sites of interest.
-        
-    - Domains = possible rovers.
-        
-    - Constraints = no overlapping paths, limited energy per rover, all sites covered.
-        
-    - Solvers: Backtracking, AC-3, MRV heuristic.
-        
-- **Best When:** Multiple rovers must coordinate missions efficiently.
-    
+**Highlights:**
+- Multiple cost-based pathfinding algorithms (BFS, DFS, UCS, A\*)
+- Terrain-based cost weighting
+- Visual trace of rover’s optimal route
 
 ---
 
-## 6. **Adversarial Search (Game/Minimax)**
+### 👻 Pacman Problem
+A visualized Pacman agent navigating a maze environment while searching for food pellets using AI search algorithms.  
 
-- **Idea:** Optimize strategy against an opponent.
-    
-- **In Rover Context:**
-    
-    - NASA rover vs ISRO rover racing to collect samples.
-        
-    - Turns alternate; evaluation function = sites collected difference.
-        
-    - Algorithm: Minimax with Alpha-Beta pruning.
-        
-- **Best When:** Missions are competitive, not cooperative.
+**Algorithms Implemented:**
+- BFS (Breadth-First Search)
+- DFS (Depth-First Search)
+- UCS (Uniform Cost Search)
+- A\* (A-star with Manhattan heuristic)
 
+**Visualization:**  
+Implemented using **Streamlit**, showing Pacman’s path exploration and solution trace.
+
+---
+
+### ♟️ Adversarial Search using Checkers
+Implements a competitive two-player game agent using **Minimax** and **Alpha–Beta pruning**.  
+Pacman’s environment is replaced by a **Checkers board** where the AI predicts opponent moves and optimizes decisions.
+
+**Key Components:**
+- State-space search
+- Evaluation function for heuristic scoring
+- Move generation, captures, and pruning
+- Pygame visualization
+
+---
+
+### 🧮 Constraint Satisfaction Problems (CSP)
+#### 🧩 Sudoku Solver
+Solves Sudoku grids using:
+- **Backtracking Search**
+- **AC-3 (Arc Consistency)**
+- **MRV (Minimum Remaining Values)** heuristic
+
+#### 🏫 Timetable Scheduling
+Generates conflict-free university timetables using:
+- **Constraint satisfaction formulation**
+- **Backtracking with domain pruning**
+- **Hard constraint validation**
+
+---
+
+### 🔍 Search Algorithms
+Core implementation of AI search strategies applicable to multiple domains (Pacman, Mars Rover, Smart City Grid).
+
+| Algorithm | Type | Characteristics |
+|------------|------|----------------|
+| **BFS** | Uninformed | Explores level-wise, guarantees shortest path in uniform cost |
+| **DFS** | Uninformed | Explores depth-first, may find suboptimal paths |
+| **UCS** | Informed | Expands least-cost nodes first |
+| **A\*** | Informed | Combines path cost + heuristic for optimality |
+
+Includes:
+- Step-by-step path reconstruction  
+- Node expansion visualization  
+- Cost analysis comparison charts
+
+---
+
+## 📊 Visual Demonstrations
+Each module supports **interactive or graphical visualization** via:
+- **Pygame** for real-time game/agent simulation  
+- **Streamlit** for clean web-based demonstrations of search traces and CSP solving  
+
+---
+
+## 🧠 Learning Objectives
+
+Through this repository, learners can:
+- Understand **AI problem-solving paradigms** via practical coding.  
+- Explore **heuristic search** and **state-space reasoning**.  
+- Apply **constraint propagation** and **adversarial game theory**.  
+- Visualize and analyze algorithmic behavior.
+
+---
